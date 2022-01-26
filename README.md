@@ -1,0 +1,12 @@
+<h1 align="center"> Imersão React </h1>
+Projetos desenvolvidos durante a Imersão React feita pela Alura nos dias 24/01/2022 a 28/01/2022.
+
+## 💻 Aulas
+- 📒 [Aula 02](https://github.com/camilavitoriacosta/aluracord/tree/Aula02)
+- 📒 [Aula 03](https://github.com/camilavitoriacosta/aluracord/tree/Aula03)
+
+## 📚 Tecnologias
+<div class='tecnologias'> 
+    <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="react">
+    <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="node">
+</div>
