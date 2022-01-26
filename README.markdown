@@ -1,3 +1,4 @@
+## Aula 2: State, novas páginas e navegação SPA vs a Tradicional
 ### 👩🏻‍💻Detalhes desta aula
 
 Nesta aula aprenderemos a lidar com o state do React e entender melhor o que é uma SPA (Single Page Application).
