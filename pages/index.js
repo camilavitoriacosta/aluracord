@@ -71,7 +71,7 @@ export default function PaginaInicial() {
 
             <TextField
               value={username}
-              onChange={function Handler() {
+              onChange={function (event) {
                 // Trocar o valor da variavel username para o que foi digitado
                 const valor = event.target.value;
                 setUsername(valor);
