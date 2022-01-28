@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 import { useRouter } from 'next/router';
 import React from 'react';
 import appConfig from '../config.json';
+import { ButtonSendSticker } from '../src/components/ButtonSendSticker'; // importa componente do botao de Sticker
 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzI4NzAwMiwiZXhwIjoxOTU4ODYzMDAyfQ.54dIt7MF3_fwil80a47PatTCrwnR_CIe_BmeTqh6jw4';
 const SUPABASE_URL = 'https://lpwawywzpwbjqacjydso.supabase.co';
@@ -10,8 +11,8 @@ const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export default function ChatPage() {
     const roteamento = useRouter();
-    const usuarioLogado = roteamento.query;
-    
+    const usuarioLogado = roteamento.query.username;
+
 
     const [mensagem, setMensagem] = React.useState('');
     const [chatMensagens, setChatMensagens] = React.useState([]);
@@ -21,7 +22,7 @@ export default function ChatPage() {
         supabaseClient.from('mensagens').select('*').order('id', { ascending: false })
             .then(
                 ({ data }) => {
-                    console.log("Dados da consulta: ", data);
+                    // console.log("Dados da consulta: ", data);
                     setChatMensagens(data)
                 }
             );
@@ -131,6 +132,12 @@ export default function ChatPage() {
                                 color: appConfig.theme.colors.neutrals[200],
                             }}
                         />
+                        <ButtonSendSticker
+                            onStickerClick={(sticker) => {
+                                //console.log('salva sticker no banco');
+                                handleNovaMensagem(':sticker:' + sticker);
+                            }
+                        } />
                     </Box>
                 </Box>
             </Box>
@@ -213,7 +220,17 @@ function MessageList(props) {
                                 {(new Date().toLocaleDateString())}
                             </Text>
                         </Box>
-                        {mensagemAtual.texto}
+
+                        {/* Começa com :sticker: ? entao exibe o sticker senao exibe o texto */}
+                        {mensagemAtual.texto.startsWith(':sticker:')
+                            ? (
+                                <Image src={mensagemAtual.texto.replace(':sticker:', '')} />
+                            )
+                            : (
+                                mensagemAtual.texto
+                            )}
+
+
                     </Text>
                 );
             })}
