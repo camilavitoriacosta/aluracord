@@ -9,6 +9,16 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5v
 const SUPABASE_URL = 'https://lpwawywzpwbjqacjydso.supabase.co';
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+function escutaMensagemEmTempoReal(adicionaMensagem) {
+    // Houve uma nova mensagem
+    return supabaseClient
+        .from('mensagens')
+        .on('INSERT', (respostaAutomatica) => {
+            adicionaMensagem(respostaAutomatica.new);
+        })
+        .subscribe();
+}
+
 export default function ChatPage() {
     const roteamento = useRouter();
     const usuarioLogado = roteamento.query.username;
@@ -19,13 +29,23 @@ export default function ChatPage() {
 
     // Obtem dados do banco de dados do Supabase
     React.useEffect(() => {
-        supabaseClient.from('mensagens').select('*').order('id', { ascending: false })
-            .then(
-                ({ data }) => {
-                    // console.log("Dados da consulta: ", data);
-                    setChatMensagens(data)
-                }
+        supabaseClient
+            .from('mensagens')
+            .select('*')
+            .order('id', { ascending: false })
+            .then(({ data }) => {
+                // console.log("Dados da consulta: ", data);
+                setChatMensagens(data)
+            });
+        escutaMensagemEmTempoReal((novaMensagem) => {
+            setChatMensagens(() => {
+                return [
+                    novaMensagem,
+                    ...chatMensagens,
+                ]
+            }
             );
+        });
     }, [chatMensagens])
 
     function handleNovaMensagem(novaMensagem) {
@@ -36,16 +56,14 @@ export default function ChatPage() {
         };
 
         // Insere dados no supabase e na lista de mensagens
-        supabaseClient.from('mensagens').insert([mensagem]).then(
-            ({ data }) => {
+        supabaseClient.from('mensagens')
+            .insert([
+                mensagem
+            ])
+            .then(({ data }) => {
                 // Guardar na lista a mensagem
-                setChatMensagens([
-                    data[0],
-                    ...chatMensagens,
-                ]);
-
             }
-        )
+            )
         // Limpar campo
         setMensagem('');
     }
@@ -137,7 +155,7 @@ export default function ChatPage() {
                                 //console.log('salva sticker no banco');
                                 handleNovaMensagem(':sticker:' + sticker);
                             }
-                        } />
+                            } />
                     </Box>
                 </Box>
             </Box>
