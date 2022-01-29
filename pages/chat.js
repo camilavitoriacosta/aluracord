@@ -242,7 +242,12 @@ function MessageList(props) {
                         {/* Começa com :sticker: ? entao exibe o sticker senao exibe o texto */}
                         {mensagemAtual.texto.startsWith(':sticker:')
                             ? (
-                                <Image src={mensagemAtual.texto.replace(':sticker:', '')} />
+                                <Image 
+                                styleSheet={{
+                                    width: '80px',
+                                    height: '80px',
+                                }}
+                                src={mensagemAtual.texto.replace(':sticker:', '')} />
                             )
                             : (
                                 mensagemAtual.texto
