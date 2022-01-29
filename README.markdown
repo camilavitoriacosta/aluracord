@@ -3,5 +3,5 @@
 
 Nesta aula vamos falar sobre:
 - Web Sockets
-- E adicionar os stickers que você pode pegar VÁRIOS aqui :)
+- E adicionar os stickers :)
 
