@@ -4,6 +4,8 @@ Projetos desenvolvidos durante a Imersão React feita pela Alura nos dias 24/01/
 ## 💻 Aulas
 - 📒 [Aula 02](https://github.com/camilavitoriacosta/aluracord/tree/Aula02)
 - 📒 [Aula 03](https://github.com/camilavitoriacosta/aluracord/tree/Aula03)
+- 📒 [Aula 04](https://github.com/camilavitoriacosta/aluracord/tree/Aula04)
+- 📒 [Aula 05](https://github.com/camilavitoriacosta/aluracord/tree/Aula05)
 
 ## 📚 Tecnologias
 <div class='tecnologias'> 
