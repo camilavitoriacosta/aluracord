@@ -23,14 +23,19 @@ export function ButtonSendSticker(props) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: appConfig.theme.colors.neutrals[300],
-          filter: isOpen ? 'grayscale(0)' : 'grayscale(1)',
+          backgroundColor: appConfig.theme.colors.neutrals['011'],
+          // filter: isOpen ? 'grayscale(0)' : 'grayscale(1)',
           hover: {
-            filter: 'grayscale(0)',
+            backgroundColor: appConfig.theme.colors.neutrals['010'],
           }
         }}
-        label="😋"
-        onClick={() => setOpenState(!isOpen)}
+        buttonColors={{
+          // contrastColor: appConfig.theme.colors.neutrals[200], //COR DA FONTE
+          mainColor: appConfig.theme.colors.neutrals[800],
+          mainColorStrong: appConfig.theme.colors.neutrals['010'],
+        }}
+        label="👻"
+        onClick={() => { setOpenState(!isOpen) }}
       />
       {isOpen && (
         <Box
