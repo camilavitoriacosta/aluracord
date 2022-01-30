@@ -173,7 +173,7 @@ function Header() {
                     Chat
                 </Text>
 
-                <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'right' }} >
+                <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'right', gap:'8px' }} >
                     <Button
                         variant='tertiary'
                         colorVariant='neutral'
