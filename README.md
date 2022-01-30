@@ -12,3 +12,8 @@ Projetos desenvolvidos durante a Imersão React feita pela Alura nos dias 24/01/
     <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="react">
     <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="node">
 </div>
+
+## 👩🏻‍💻 Personalização
+- Cabeçalho do chat com foto e nome do usuário logado
+- Verificação se a mensagem está vazia
+- Botão de enviar
