@@ -1,5 +1,9 @@
 <h1 align="center"> Imersão React </h1>
-Projetos desenvolvidos durante a Imersão React feita pela Alura nos dias 24/01/2022 a 28/01/2022.
+
+<p align="center"> 
+   Projetos desenvolvidos durante a Imersão React feita pela Alura nos dias 24/01/2022 a 28/01/2022.
+</p>
+
 
 ## 💻 Aulas
 - 📒 [Aula 02](https://github.com/camilavitoriacosta/aluracord/tree/Aula02)
