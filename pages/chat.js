@@ -86,9 +86,9 @@ export default function ChatPage() {
                     boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
                     borderRadius: '5px',
                     backgroundColor: appConfig.theme.colors.neutrals[700],
-                    height: '80%',
-                    maxWidth: '85%',
-                    maxHeight: '80vh',
+                    height: '70%',
+                    maxWidth: '70%',
+                    maxHeight: '90vh',
                     padding: '32px',
                 }}
             >
