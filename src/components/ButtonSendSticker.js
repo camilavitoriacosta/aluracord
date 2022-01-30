@@ -13,12 +13,12 @@ export function ButtonSendSticker(props) {
     >
       <Button
         styleSheet={{
-          borderRadius: '50%',
-          padding: '0 3px 0 0',
-          minWidth: '50px',
-          minHeight: '50px',
-          fontSize: '20px',
-          marginBottom: '8px',
+          borderRadius: '20%',
+          marginBottom: "6px",
+          padding: '0 0px 0 0',
+          minWidth: '40px',
+          minHeight: '40px',
+          fontSize: '8px',
           lineHeight: '0',
           display: 'flex',
           alignItems: 'center',
@@ -30,8 +30,6 @@ export function ButtonSendSticker(props) {
           }
         }}
         buttonColors={{
-          // contrastColor: appConfig.theme.colors.neutrals[200], //COR DA FONTE
-          mainColor: appConfig.theme.colors.neutrals[800],
           mainColorStrong: appConfig.theme.colors.neutrals['010'],
         }}
         label="👻"

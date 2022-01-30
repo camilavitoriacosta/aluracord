@@ -86,13 +86,13 @@ export default function ChatPage() {
                     boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
                     borderRadius: '5px',
                     backgroundColor: appConfig.theme.colors.neutrals[700],
-                    height: '70%',
+                    height: '80%',
                     maxWidth: '70%',
                     maxHeight: '90vh',
                     padding: '32px',
                 }}
             >
-                <Header />
+                <Header usuario={usuarioLogado} />
                 <Box
                     styleSheet={{
                         position: 'relative',
@@ -121,6 +121,7 @@ export default function ChatPage() {
                         styleSheet={{
                             display: 'flex',
                             alignItems: 'center',
+                            gap: '8px',
                         }}
                     >
                         <TextField
@@ -133,8 +134,9 @@ export default function ChatPage() {
                                 if (event.key === 'Enter') {
                                     // Evitar a quebra de linha
                                     event.preventDefault();
-
-                                    handleNovaMensagem(mensagem);
+                                    if (mensagem) { // verifica se a mensagem está vazia
+                                        handleNovaMensagem(mensagem);
+                                    }
                                 }
                             }}
                             placeholder="Insira sua mensagem aqui..."
@@ -146,7 +148,6 @@ export default function ChatPage() {
                                 borderRadius: '5px',
                                 padding: '6px 8px',
                                 backgroundColor: appConfig.theme.colors.neutrals[800],
-                                marginRight: '12px',
                                 color: appConfig.theme.colors.neutrals[200],
                             }}
                         />
@@ -155,7 +156,31 @@ export default function ChatPage() {
                                 //console.log('salva sticker no banco');
                                 handleNovaMensagem(':sticker:' + sticker);
                             }
-                            } />
+                            }
+                        />
+                        <Button
+                            onClick={() => {
+                                if (mensagem) { // verifica se a mensagem está vazia
+                                    handleNovaMensagem(mensagem);
+                                }
+                            }}
+                            label='Enviar'
+                            styleSheet={{
+                                minWidth: '40px',
+                                minHeight: '40px',
+                                color: appConfig.theme.colors.neutrals[100],
+                                backgroundColor: appConfig.theme.colors.neutrals['011'],
+                                transition: "0.5s",
+                                marginBottom: "6px",
+                                hover: {
+                                    backgroundColor: appConfig.theme.colors.neutrals['010'],
+                                },
+                            }}
+                            buttonColors={{
+                                mainColorStrong: appConfig.theme.colors.neutrals['010'],
+                            }}
+                        />
+
                     </Box>
                 </Box>
             </Box>
@@ -163,24 +188,13 @@ export default function ChatPage() {
     )
 }
 
-function Header() {
-    const usuarioLogado = useRouter().query.username;
-
+function Header(props) {
     return (
         <>
-            <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
-                <Text variant='heading5'>
-                    Chat
-                </Text>
+            <Box styleSheet={{ width: '100%', marginBottom: '8px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
+                <Box styleSheet={{ width: '100%', marginBottom: '2px', display: 'flex', alignItems: 'center', justifyContent: 'left', gap: '4px' }} >
 
-                <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'right', gap:'8px' }} >
-                    <Button
-                        variant='tertiary'
-                        colorVariant='neutral'
-                        label='Logout'
-                        href="/"
-                    />
-                    <Image
+                    {<Image
                         styleSheet={{
                             width: '30px',
                             height: '30px',
@@ -188,9 +202,18 @@ function Header() {
                             display: 'inline-block',
                             marginRight: '8px',
                         }}
-                        src={`https://github.com/${usuarioLogado}.png`}
-                    />
+                        src={`https://github.com/${props.usuario}.png`}
+                    />}
+                    <Text variant='heading5'>
+                        {props.usuario}
+                    </Text>
                 </Box>
+                <Button
+                    variant='tertiary'
+                    colorVariant='neutral'
+                    label='Logout'
+                    href="/"
+                />
             </Box>
         </>
     )
@@ -257,12 +280,12 @@ function MessageList(props) {
                         {/* Começa com :sticker: ? entao exibe o sticker senao exibe o texto */}
                         {mensagemAtual.texto.startsWith(':sticker:')
                             ? (
-                                <Image 
-                                styleSheet={{
-                                    width: '80px',
-                                    height: '80px',
-                                }}
-                                src={mensagemAtual.texto.replace(':sticker:', '')} />
+                                <Image
+                                    styleSheet={{
+                                        width: '80px',
+                                        height: '80px',
+                                    }}
+                                    src={mensagemAtual.texto.replace(':sticker:', '')} />
                             )
                             : (
                                 mensagemAtual.texto
