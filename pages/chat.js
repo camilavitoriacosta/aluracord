@@ -164,18 +164,33 @@ export default function ChatPage() {
 }
 
 function Header() {
+    const usuarioLogado = useRouter().query.username;
+
     return (
         <>
             <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
                 <Text variant='heading5'>
                     Chat
                 </Text>
-                <Button
-                    variant='tertiary'
-                    colorVariant='neutral'
-                    label='Logout'
-                    href="/"
-                />
+
+                <Box styleSheet={{ width: '100%', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'right' }} >
+                    <Button
+                        variant='tertiary'
+                        colorVariant='neutral'
+                        label='Logout'
+                        href="/"
+                    />
+                    <Image
+                        styleSheet={{
+                            width: '30px',
+                            height: '30px',
+                            borderRadius: '50%',
+                            display: 'inline-block',
+                            marginRight: '8px',
+                        }}
+                        src={`https://github.com/${usuarioLogado}.png`}
+                    />
+                </Box>
             </Box>
         </>
     )
@@ -187,7 +202,7 @@ function MessageList(props) {
         <Box
             tag="ul"
             styleSheet={{
-                overflow: 'scroll',
+                overflow: 'auto',
                 display: 'flex',
                 flexDirection: 'column-reverse',
                 flex: 1,
