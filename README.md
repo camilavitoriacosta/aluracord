@@ -19,5 +19,7 @@
 
 ## 👩🏻‍💻 Personalização
 - Cabeçalho do chat com foto e nome do usuário logado
+- Nome do usuario redireciona para o perfil do github
 - Verificação se a mensagem está vazia
 - Botão de enviar
+
