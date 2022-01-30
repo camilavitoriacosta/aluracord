@@ -204,9 +204,19 @@ function Header(props) {
                         }}
                         src={`https://github.com/${props.usuario}.png`}
                     />}
-                    <Text variant='heading5'>
+
+                    <Text
+                        variant='heading5'
+                        tag='a'
+                        href={`https://github.com/${props.usuario}`}
+                        target='_blank'
+                        styleSheet={{
+                            color: appConfig.theme.colors.neutrals['000'],
+                            textDecoration: 'none'
+                        }}>
                         {props.usuario}
                     </Text>
+
                 </Box>
                 <Button
                     variant='tertiary'
@@ -262,7 +272,14 @@ function MessageList(props) {
                                 }}
                                 src={`https://github.com/${mensagemAtual.de}.png`}
                             />
-                            <Text tag="strong">
+                            <Text tag="strong"
+                                tag='a'
+                                href={`https://github.com/${mensagemAtual.de}`}
+                                target='_blank'
+                                styleSheet={{
+                                    color: appConfig.theme.colors.neutrals['000'],
+                                    textDecoration: 'none'
+                                }}>
                                 {mensagemAtual.de}
                             </Text>
                             <Text
